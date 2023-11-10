@@ -44,6 +44,7 @@ namespace ScavengeRUs.Controllers
             {
                 return View("Error", new ErrorViewModel() { Text = "Enter a valid access code." }); 
                 //sydnie's comment for sprint 1
+                //dylan's comment for sprint 1
             }
             var user = await _userRepo.FindByAccessCode(accessCode.Code!);
             if (user == null)
