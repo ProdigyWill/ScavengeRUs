@@ -234,3 +234,4 @@ sideBarClose.addEventListener('click', e => {
         event.preventDefault();
     });
 }());
+

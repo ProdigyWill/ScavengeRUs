@@ -77,12 +77,10 @@
     <p>
         @if (User.IsInRole("Admin"))
         {
-            <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" class="btn btn-danger">Manage Tasks</a>
+            <a asp-action="Update" asp-route-Id="@hunt.Id" class="btn btn-danger">Edit Hunt</a>
 
             <a asp-action="ViewPlayers" asp-route-Id="@hunt.Id" class="btn btn-danger">View Players</a>
 
-            <a asp-action="Index" asp-route-Id="@hunt.Id" class="btn btn-danger">View all hunts</a>
-            <span style="color:Red;">*** Only admins can see/access the red buttons</span>
             <hr />
         }
     </p>
@@ -105,59 +103,108 @@
             <hr />
 
         }
-
+        <table>
         @foreach (var item in Model)
         {
-
             var img = $"/images/{item.Place}.jpg";
-            <div id="taskitem">
-                <a data-id="@item.Id" data-task="@item.Task" data-huntid="@hunt.Id" id="btnCreateTask" class="list-group-item list-group-item-action">
-                    <div class="row" id="taskrow">
 
-                        <div class="col">
-                            <img id="taskimg" src="@img" />
-                        </div>
-                        <div class="col-6">
-                            <div class="row" id="taskheader">
-                                @Html.DisplayFor(model => item.Place)
-                            </div>
-                            <div class="row" id="taskbody">
-                                @Html.DisplayFor(model => item.Task)
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="row" id="taskstatus">
-                                <span>Status</span>
-                            </div>
-                            <div class="row" id="taskbody">
-                                @if (item.Completed == "Completed")
-                                {
-                                    <span id="status" style="color:green">Completed</span>
-                                }
-                                else
-                                {
-                                    <span id="status" style="color:red">Incomplete</span>
-                                }
+                <tr height="120px" id="taskItem">
 
-                            </div>
-                        </div>
-                                <div class="col">
-                                    <div class="row" id="taskAnswer">
-                                        <a href="/Locations/Edit/@item.Id" class="btn btn-secondary">Edit</a>
-                                        <a href="/Locations/Delete/@item.Id" class="btn btn-danger">Delete</a>
-                                    </div>
-                                </div>
+                    <td class="col-2" align="center">
+                        <img id="taskimg" src="@img"/>
+                        </td>
+                    <td class="col-7">
+                            <table id="noBorder">
+                                <tr id="noBorder">
+                                    <td>
+                                    <strong>@Html.DisplayFor(model => item.Place)</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    @Html.DisplayFor(model => item.Task)
+                                </td>
 
-                    </div>
+                                </tr>
+                            </table>
 
-                </a>
-            </div>
+                        </td>
+                       @if (!User.IsInRole("Admin"))
+                    {
+                        <td class="col-1">
+                            <table id="noBorder">
+                                <tr id="noBorder">
+                                    <td>
+                                        <strong>Status:</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (item.Completed == "Completed")
+                                        {
+                                            <span id="status" style="color:green">Completed</span>
+                                        }
+                                        else
+                                        {
+                                            <span id="status" style="color:red">Incomplete</span>
+                                        }
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </td>
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td class="col-2">
+                                <a asp-controller="Locations"
+                                   asp-action="Edit"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-primary">Edit task</a>
+                                <a asp-controller="Locations"
+                                    asp-action="Delete"
+                                    asp-route-id="@item.Id"
+                                    class="btn btn-danger">Delete Task</a>
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="col-2">
+
+                            <button data-bs-toggle="modal"
+                                    data-bs-target="#createTaskModal"
+                                    data-id="@item.Id" 
+                                    data-task="@item.Task" 
+                                    data-huntid="@hunt.Id" 
+                                    id="btnCreateTask" 
+                                    class="list-group-item list-group-item-action" 
+                                    onlick="_homeIndexMain()">
+                                Complete
+                            </button>
+                        </td>
+                    }
+            </tr>
+
         }
+        </table>
 
     </div>
 
 </div>
+<script>
+    const modal = document.getElementById('createTaskModal')
 
+    modal.addEventListener('show.bs.modal', () => {
+        console.log('show instance method called!');
+    })
+
+    modal.addEventListener('shown.bs.modal', () => {
+        console.log('modal element completely visible!');
+    })
+</script>
 
 
 @*Sidebar*@
