@@ -98,11 +98,12 @@
             <span style="text-align:center">No tasks are assigned to this hunt.</span>
             @if (User.IsInRole("Admin"))
             {
-                <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" style="width: 100px; margin: auto" class="btn btn-danger mt-3">Add Tasks</a>
+                <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" style="width: 100px; margin: auto" class="btn btn-success mt-3">Add Tasks</a>
             }
             <hr />
 
         }
+        else{
         <table>
         @foreach (var item in Model)
         {
@@ -168,6 +169,7 @@
                                     asp-route-id="@item.Id"
                                     class="btn btn-danger">Delete Task</a>
                         </td>
+                        
 
                     }
                     else
@@ -189,8 +191,11 @@
             </tr>
 
         }
-        </table>
 
+        </table>
+        <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" style="width: 100px; margin: auto" class="btn btn-success mt-3">Add Tasks</a>
+
+        }
     </div>
 
 </div>
