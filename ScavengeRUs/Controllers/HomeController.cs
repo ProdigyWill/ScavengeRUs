@@ -58,7 +58,7 @@ namespace ScavengeRUs.Controllers
         /// Only people that are "Admin" can view this 
         /// </summary>
         /// <returns></returns>
-        // [Authorize(Roles ="Admin")] Not including this line allows everyone to view this page
+        [Authorize(Roles ="Admin")]
         public IActionResult Privacy()
         {
             return View();

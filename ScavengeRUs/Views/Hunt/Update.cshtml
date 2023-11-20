@@ -37,19 +37,9 @@
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
-            @* This is a new invitation form I added to allow users to edit invitation text.
-               BTW, Invitation text = Description text?? confusing naming maybe change
-               Invitation Text does not update on save, everything else does update correctly
-            *@
-            <div class="form-group">
-                <label asp-for="InvitationText" class="control-label"></label>
-                <input asp-for="InvitationText" class="form-control" />
-                <span asp-validation-for="InvitationText" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-            
         </form>
     </div>
 </div>

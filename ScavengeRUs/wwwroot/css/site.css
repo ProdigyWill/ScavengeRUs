@@ -103,7 +103,6 @@ body {
 #taskitem:hover .completeBtn{
     background-color: #FFC72C;
 }
-
 #taskAnswer span i {
     vertical-align: middle;
     text-align: center;
@@ -158,15 +157,3 @@ body {
 /*.navbar-toggler {
     background-color: #191970;
 }*/
-
-table, tr {
-    border: 2px solid lightgrey;
-    background-color: #e8e6e6;
-}
-#noBorder {
-    border-style: hidden;
-}
-
-#btnCreateTask {
-
-}
