@@ -218,6 +218,7 @@ sideBarClose.addEventListener('click', e => {
                     setTimeout(() => {
                         createTaskModal.hide();
                     }, 1500);
+                    location.reload();
                 }
                 else {
                     $('#failedMessageArea').html("Incorrect! Try again.");
