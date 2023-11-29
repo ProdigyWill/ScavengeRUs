@@ -159,7 +159,7 @@ namespace ScavengeRUs.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ViewTasks", "Hunt");
             }
             return View(location);
         }
