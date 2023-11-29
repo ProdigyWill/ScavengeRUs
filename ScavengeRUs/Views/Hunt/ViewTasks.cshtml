@@ -197,8 +197,10 @@
         }
 
         </table>
-        <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" style="width: 100px; margin: auto" class="btn btn-success mt-3">Add Tasks</a>
-
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="ManageTasks" asp-route-Id="@hunt.Id" style="width: 100px; margin: auto" class="btn btn-success mt-3">Create Task</a>
+            }
         }
     </div>
 
