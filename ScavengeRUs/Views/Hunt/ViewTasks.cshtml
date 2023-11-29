@@ -174,19 +174,23 @@
                     }
                     else
                     {
-                        <td class="col-2">
+                            @if (item.Completed != "Completed")
+                            {
+                                <td class="col-1">
 
-                            <button data-bs-toggle="modal"
-                                    data-bs-target="#createTaskModal"
-                                    data-id="@item.Id" 
-                                    data-task="@item.Task" 
-                                    data-huntid="@hunt.Id" 
-                                    id="btnCreateTask" 
-                                    class="list-group-item list-group-item-action" 
-                                    onlick="_homeIndexMain()">
-                                Complete
-                            </button>
-                        </td>
+                                    <button data-bs-toggle="modal"
+                                            data-bs-target="#createTaskModal"
+                                            data-id="@item.Id"
+                                            data-task="@item.Task"
+                                            data-huntid="@hunt.Id"
+                                            id="btnCreateTask"
+                                            class="btn btn-primary"
+                                            onlick="_homeIndexMain()">
+                                        Complete
+                                    </button>
+                                </td>
+                            }
+
                     }
             </tr>
 
