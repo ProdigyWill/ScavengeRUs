@@ -71,7 +71,14 @@
 <div id="taskarea">
     <div class="row">
         <div class="col">
-            <h1>Manage Tasks for @hunt.HuntName</h1>
+            @if (User.IsInRole("Admin"))
+            {
+                <h1>Manage Tasks for @hunt.HuntName</h1>
+            }
+            else
+            {
+                <h1>Tasks for @hunt.HuntName</h1>
+            }
         </div>
     </div>
     <p>

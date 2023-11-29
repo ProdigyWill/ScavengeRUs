@@ -95,7 +95,7 @@ namespace ScavengeRUs.Controllers
                 await _context.SaveChangesAsync();
                 if (huntid != 0)
                 {
-                    return RedirectToAction("ManageTasks", "Hunt", new { id = huntid });
+                    return RedirectToAction("ViewTasks", "Hunt", new { id = huntid });
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -209,7 +209,7 @@ namespace ScavengeRUs.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("ViewTasks", "Hunt");
         }
 
         /// <summary>
