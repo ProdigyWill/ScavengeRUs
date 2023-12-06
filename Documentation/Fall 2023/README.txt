@@ -1,1 +1,3 @@
+The .pdf file included is for your reference and help getting started in your endeavors. The pdf contains all of our documentation, developer notes to your team, standards, bugs found, product backlog, etc. It should be helpful in getting started.
 
+If you want to continue using the documentation management software we used, you can import the folder titled 'Confluence-export-projectpirates' into an instance of Confluence Cloud (Google it if you don't know what Confluence is, you will be amazed at how awesome it is!). How to import into Confluence Cloud: https://support.atlassian.com/confluence-cloud/docs/import-a-confluence-cloud-space/
